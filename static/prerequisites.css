@@ -1,0 +1,22 @@
+body {
+    padding: 10px;
+}
+table {
+    width: 100%;
+}
+td {
+    background-image: none !important;
+}
+pre {
+    width: 50%;
+}
+.matches-container {
+    width: 100%;
+}
+.matches-container label {
+    width: 100%;
+}
+.matches-container input {
+    width: 80%;
+    display: inline-block;
+}

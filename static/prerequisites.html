@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICS Prerequisites</title>
+    <link rel="stylesheet" type="text/css" href="/static/prerequisites.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+</head>
+<body>
+    <div class="matches-container">
+        <label>
+            Courses taken: <input type="text" id="matches-input" class="form-control input-sm">
+            <button id="matches-btn" class="btn btn-default">list matches</button>
+        </label>
+    </div>
+
+    <table id="prereq-table" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Prerequisites</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Prerequisites</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="static/prerequisites.js"></script>
+</body>
+</html>
