@@ -120,7 +120,10 @@ function loadTable() {
         displayTable(allCourses);
 
         $("#matches-btn").on("click", function() {
-            let coursesTaken = $("#matches-input").val().split(",").map((s) => s.toLowerCase());
+            let coursesTaken = $("#matches-input").val().split(",")
+                .map((s) => s.toLowerCase())
+                .map((s) => s.trim())
+                .map((s) => s.replace(/ics/, "i&c sci"));
             if (coursesTaken == "")
                 displayTable(allCourses);
             else {

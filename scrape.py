@@ -104,6 +104,10 @@ def print_tokens(tokens: [str or [str]], indent=""):
 def tokenize(strings: [str]) -> [str or [str]]:
     index = 0
     tokens = []
+
+    if len(strings) > 1 and strings[0] == "SCHOOL OF" and strings[1] == "I&C SCI":
+        return None
+
     while index in range(len(strings)):
         string = strings[index]
 
@@ -112,16 +116,21 @@ def tokenize(strings: [str]) -> [str or [str]]:
             substrings = strings[index+1:end]
             index = end
 
-            tokens.append(tokenize(substrings))
+            subtokens = tokenize(substrings)
+            if subtokens:
+                tokens.append(subtokens)
         elif string == ")":
             assert string != ")"
             continue
         elif "grade = c" in string.lower() or "min " in string:
             pass
+        elif string in ["MAJORS ONLY", "I&C SCI", "SCHOOL OF", "COMPUTER SCI & ENGR"]:
+            pass
         elif "NO REPEATS ALLOWED" in string:
             tokens.pop()
-        elif "LOWER DIVISION WRITING" in string:
-            tokens.pop()
+        elif "DIVISION" in string:
+            if len(tokens) >= 1:
+                tokens.pop()
         else:
             tokens.append(normalize(string))
 
@@ -197,7 +206,7 @@ class Course(object):
 def get_school_courses(school) -> [Course]:
     # "http://catalogue.uci.edu/ribbit/index.cgi?page=getcourse.rjs&code=STATS%207"
 
-    url = "https://www.reg.uci.edu/cob/prrqcgi?dept={}&term=201903&action=view_all#1B".format(urllib.parse.quote(school))
+    url = "https://www.reg.uci.edu/cob/prrqcgi?dept={}&term=202203&action=view_all#1B".format(urllib.parse.quote(school))
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
 
